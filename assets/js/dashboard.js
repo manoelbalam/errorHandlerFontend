@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("#wrapper").toggleClass("toggle");
   if (sessionStorage.getItem("jtwToken") === null) { window.location.replace("http://localhost:5000"); }
   $("#example").DataTable();
 
@@ -24,8 +25,6 @@ $(document).ready(function () {
       contentType: "application/json",
       dataType: 'json',
       success: function (data) {
-        // console.log(data);
-        // myJsonData = data;
         populateDataTable(data);
       },
       error: function (e) {
@@ -35,28 +34,18 @@ $(document).ready(function () {
     });
   }
 
-  // populate the data table with JSON data
+  // populate the errorLogTable with JSON data
   function populateDataTable(data) {
-    // console.log("populating data table...");
-    // clear the table before populating it with more data
-    // console.log(data);
-    $("#example").DataTable().clear();
+    document.getElementById("userName").textContent=sessionStorage.getItem('name');
+    $("#errorLogTable").DataTable().clear();
     $.each(data, function(k,v) {
-      console.log(v);
-
-      $('#example').dataTable().fnAddData([
+      $('#errorLogTable').dataTable().fnAddData([
         v.lead_id,
         v.error,
         v.country,
         v.created_at
       ]);
-      // $('#example').dataTable().fnAddData([
-      //   v.lead_id,
-      //   v.error,
-      //   v.country,
-      //   v.created_at
-      // ]);
-      /// do stuff
     });
+    
   }
 });
