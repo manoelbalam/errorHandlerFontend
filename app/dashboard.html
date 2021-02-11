@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%234e73df%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>😠</text></svg>" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%234e73df%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>😠</text></svg>" />
 
 
     <title>Error Log</title>
@@ -109,8 +109,31 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                        <!-- Begin Page Content -->
+                            <div class="container-fluid">
+
+                                <div class="card shadow mb-4">
+
+                                    <form class="form-inline">
+                                    <label for="leadId" class="m-2"></label>
+                                    <input type="text" class="form-control m-2" id="leadId" placeholder="Lead Id">
+
+                                    <div class="form-inline">
+                                        <select id="selectError" class="form-control">
+                                            <option selected>Error...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-inline">
+                                        <select id="selectCountry" class="form-control">
+                                            <option selected>Country...</option>
+                                            <option>...</option>
+                                        </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary m-2">Submit</button>
+                    </form>
+            </div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-body">

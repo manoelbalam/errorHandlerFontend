@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  $('.dropdown-menu a').on('click', function(){    
+    $('.dropdown-toggle').html($(this).html());    
+})
+
+$('.dropdown-menu-country a').on('click', function(){    
+  $('.dropdown-toggle').html($(this).html());    
+})
   $("#wrapper").toggleClass("toggle");
   if (sessionStorage.getItem("jtwToken") === null) { window.location.replace("http://localhost:5000"); }
   $("#example").DataTable();
@@ -36,6 +43,7 @@ $(document).ready(function () {
 
   // populate the errorLogTable with JSON data
   function populateDataTable(data) {
+
     document.getElementById("userName").textContent=sessionStorage.getItem('name');
     $("#errorLogTable").DataTable().clear();
     $.each(data, function(k,v) {
