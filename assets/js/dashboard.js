@@ -1,6 +1,6 @@
 $(document).ready(function () {
   if (sessionStorage.getItem("jtwToken") === null) { window.location.replace("http://localhost:5000"); }
-  // $("#example").DataTable();
+  $("#example").DataTable();
 
   var backendUrl = "http://localhost:8000/api/"
 
@@ -40,10 +40,16 @@ $(document).ready(function () {
     // console.log("populating data table...");
     // clear the table before populating it with more data
     // console.log(data);
-    // $("#example").DataTable().clear();
+    $("#example").DataTable().clear();
     $.each(data, function(k,v) {
       console.log(v);
 
+      $('#example').dataTable().fnAddData([
+        v.lead_id,
+        v.error,
+        v.country,
+        v.created_at
+      ]);
       // $('#example').dataTable().fnAddData([
       //   v.lead_id,
       //   v.error,
@@ -52,14 +58,5 @@ $(document).ready(function () {
       // ]);
       /// do stuff
     });
-
-    // var length = Object.keys(data).length;
-    // console.log(data);
-    // for (var i = 0; i < length + 1; i++) {
-      // var error = ;
-      // console.log('error');
-
-      // You could also use an ajax property on the data table initialization
-    // }
   }
 });
