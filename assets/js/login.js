@@ -7,7 +7,8 @@ $(document).ready(function(){
         }
     });
 
-    $("#loginButton").click(function(){ 
+    $("#loginButton").click(function(){
+        alert('login');
         var email = $( "#email" ).val();
         var password = $( "#password" ).val();
         $.ajax
@@ -23,7 +24,7 @@ $(document).ready(function(){
                     sessionStorage.setItem("id", result.user.id);
                     sessionStorage.setItem("name", result.user.name);
                     sessionStorage.setItem("jtwToken", result.access_token);
-                    window.location.replace("http://localhost:5000/app/dashboard.html");
+                    window.location.replace("http://localhost/app/dashboard.html");
                 }
             },
             error: function (xhr)
@@ -32,6 +33,31 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#logoutButton").click(function(){
+        $.ajax
+        ({ 
+            url: 'http://localhost:8000/api/auth/logout',
+            type: 'POST',
+            dataType: "JSON",
+            success: function(result)
+            {
+                if (window.sessionStorage) {
+                    // console.log(result);
+                    sessionStorage.removeItem("id");
+                    sessionStorage.removeItem("name");
+                    sessionStorage.removeItem("jtwToken");
+                    window.location.replace("http://localhost/");
+                }
+            },
+            error: function (xhr)
+            {
+                console.log(xhr.responseJSON);
+            }
+        });
+    });
+
+    
 });
 
 
