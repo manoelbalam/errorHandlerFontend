@@ -1,3 +1,5 @@
+var backendUrl = "http://localhost:8000/api/";
+var frontendUrl = "http://errorhandler.ddns.net/";
 $(document).ready(function(){
     $('.login-info-box').fadeOut();
     $('.login-show').addClass('show-log-panel');
@@ -8,12 +10,12 @@ $(document).ready(function(){
     });
 
     $("#loginButton").click(function(){
-        alert('login');
+
         var email = $( "#email" ).val();
         var password = $( "#password" ).val();
         $.ajax
         ({ 
-            url: 'http://localhost:8000/api/auth/login',
+            url: backendUrl+'auth/login',
             data: {"email": email,"password":password},
             type: 'post',
             dataType: "JSON",
@@ -24,7 +26,7 @@ $(document).ready(function(){
                     sessionStorage.setItem("id", result.user.id);
                     sessionStorage.setItem("name", result.user.name);
                     sessionStorage.setItem("jtwToken", result.access_token);
-                    window.location.replace("http://localhost/app/dashboard.html");
+                    window.location.replace(frontendUrl+"app/dashboard.html");
                 }
             },
             error: function (xhr)
@@ -37,17 +39,16 @@ $(document).ready(function(){
     $("#logoutButton").click(function(){
         $.ajax
         ({ 
-            url: 'http://localhost:8000/api/auth/logout',
+            url: backendUrl+'auth/logout',
             type: 'POST',
             dataType: "JSON",
-            success: function(result)
+            success: function()
             {
                 if (window.sessionStorage) {
-                    // console.log(result);
                     sessionStorage.removeItem("id");
                     sessionStorage.removeItem("name");
                     sessionStorage.removeItem("jtwToken");
-                    window.location.replace("http://localhost/");
+                    window.location.replace(frontendUrl);
                 }
             },
             error: function (xhr)
